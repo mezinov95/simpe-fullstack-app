@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null
+  api:
+    build:
+      context: ./src/server/
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    depends_on:
+      - mongo
+    environment:
+      - PORT=3001
+      - MONGO_URL=mongodb://mongo:27017/moleculer-demo
+  client:
+    build:
+      context: ./src/client/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+    environment:
+      - PORT=3000

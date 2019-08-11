@@ -1,0 +1,12 @@
+{
+    "name": "simple-fullstack-app",
+    "version": "1.0.0",
+    "description": "Simple fullstack app",
+    "scripts": {
+      "start": "docker-compose up"
+    },
+    "author": "Nikolay Mezinov",
+    "license": "ISC",
+    "dependencies": {}
+  }
+  
